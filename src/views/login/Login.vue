@@ -69,7 +69,7 @@
                 });
             },
             register() {
-                this.$router.replace('/register');
+                this.$router.push('/register');
             }
         }
     }
