@@ -95,7 +95,7 @@
                 }
                 else {
                     _this.noAccount = false ;
-                    axios.post("http://localhost:8081/controller/verify",
+                    axios.post("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/verify",
                         {"account" : _this.user.account}).then(function (reps){
                         // 驗證成功 !!
                         // 此帳號沒有使用過
@@ -130,7 +130,7 @@
                 }
                 else {
                     const _this = this ;
-                    axios.post("http://localhost:8081/controller/register",_this.user)
+                    axios.post("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/register",_this.user)
                     .then(function (reps){
                         if ( reps.data ) {
                             alert("註冊成功，請用此帳號登入");

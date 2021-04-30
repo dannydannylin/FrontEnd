@@ -204,7 +204,7 @@
             nextPage() {
                 this.pageCount++ ;
                 const _this = this  ;
-                axios.get("http://localhost:8081/controller/account/" +
+                axios.get("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/account/" +
                     this.$route.params.id + "/" + this.pageCount )
                     .then(function (resp) {
                         _this.articles = resp.data.content ;
@@ -214,7 +214,7 @@
             prePage() {
                 this.pageCount-- ;
                 const _this = this  ;
-                axios.get("http://localhost:8081/controller/account/" +
+                axios.get("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/account/" +
                     this.$route.params.id + "/" + this.pageCount )
                     .then(function (resp) {
                         _this.articles = resp.data.content ;
@@ -240,17 +240,17 @@
         },
         created() {
             const _this = this  ;
-            axios.get("http://localhost:8081/controller/account/" +
+            axios.get("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/account/" +
                 this.$route.params.id + "/0" )
                 .then(function (resp) {
                 _this.articles = resp.data.content ;
             });
-            axios.get("http://localhost:8081/controller/accountTotalPage/" + this.$route.params.id)
+            axios.get("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/accountTotalPage/" + this.$route.params.id)
                 .then(function (resp) {
                     _this.totalPage = resp.data ;
                 });
 
-            axios.get("http://localhost:8081/controller/user/" + this.$route.params.id)
+            axios.get("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/user/" + this.$route.params.id)
                 .then(function (resp) {
                     _this.user = resp.data ;
                     if ( _this.user.gender === 'male' )

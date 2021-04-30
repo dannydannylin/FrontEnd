@@ -209,7 +209,7 @@ export default {
             this.pageCount++ ;
             console.log(this.pageCount);
             const _this = this  ;
-            axios.get("http://localhost:8081/controller/international/" + this.pageCount)
+            axios.get("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/international/" + this.pageCount)
                 .then(function (resp) {
                     _this.articles = resp.data.content ;
                 });
@@ -218,7 +218,7 @@ export default {
         prePage() {
             this.pageCount-- ;
             const _this = this  ;
-            axios.get("http://localhost:8081/controller/international/" + this.pageCount)
+            axios.get("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/international/" + this.pageCount)
                 .then(function (resp) {
                     _this.articles = resp.data.content ;
                 });
@@ -228,11 +228,11 @@ export default {
     created() {
         this.pageCount = 0 ;
         const _this = this  ;
-        axios.get("http://localhost:8081/controller/international/0")
+        axios.get("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/international/0")
             .then(function (resp) {
                 _this.articles = resp.data.content ;
             });
-        axios.get("http://localhost:8081/controller/totalPage/3")
+        axios.get("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/totalPage/3")
             .then(function (resp) {
                 _this.totalPage = resp.data ;
             });

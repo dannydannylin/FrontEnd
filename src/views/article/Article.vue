@@ -230,7 +230,7 @@
             },
             deleteArticle(id) {
                 const _this = this ;
-                axios.delete("http://localhost:8081/controller/article/" + id,
+                axios.delete("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/article/" + id,
                     {
                         headers: {
                             token: store.state.token
@@ -261,12 +261,12 @@
 
                 this.userMethod();
 
-                axios.post("http://localhost:8081/controller/comments/", this.comment)
+                axios.post("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/comments/", this.comment)
                     .then(function (reps){
                         if ( reps.data ) {
                             // 再發送一次請求
                             // 達到刷新頁面的效果
-                            axios.get("http://localhost:8081/controller/comments/" + articleId)
+                            axios.get("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/comments/" + articleId)
                                 .then(function (reps){
                                     _this.comments = reps.data ;
                                     // 清空輸入欄
@@ -287,12 +287,12 @@
 
                 const _this = this ;
                 const articleId = this.$route.params.id ;
-                axios.delete("http://localhost:8081/controller/comments/" + id)
+                axios.delete("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/comments/" + id)
                     .then(function (reps){
                         if ( reps.data ) {
                             // 再發送一次請求
                             // 達到刷新頁面的效果
-                            axios.get("http://localhost:8081/controller/comments/" + articleId)
+                            axios.get("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/comments/" + articleId)
                                 .then(function (reps){
                                     _this.comments = reps.data ;
                                 })
@@ -318,7 +318,7 @@
         created() {
 
             // 拿 username
-            axios.post("http://localhost:8081/controller/userInfo",
+            axios.post("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/userInfo",
                 { "token" : store.state.token } )
                 .then(function (resp) {
                     _this.user.username = resp.data['account'] ;
@@ -328,13 +328,13 @@
             const articleId = this.$route.params.id ;
             const _this = this ;
             // 拿文章
-            axios.get("http://localhost:8081/controller/article/" + articleId)
+            axios.get("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/article/" + articleId)
                 .then(function (reps){
                 if ( reps.data !== null ) {
                     _this.article = reps.data ;
                     _this.changeLevelName(_this);
                     // 更新點閱次數
-                    axios.get("http://localhost:8081/controller/article/addViews/" + articleId)
+                    axios.get("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/article/addViews/" + articleId)
                         .then(function (reps){
 
                         });
@@ -342,7 +342,7 @@
             });
 
             // 拿留言
-            axios.get("http://localhost:8081/controller/comments/" + articleId)
+            axios.get("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/comments/" + articleId)
                 .then(function (reps){
                     _this.comments = reps.data ;
                 })

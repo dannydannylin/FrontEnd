@@ -103,7 +103,7 @@ export default {
     methods: {
         updateData() {
             const _this = this ;
-            axios.get("http://localhost:8081/controller/admin/boss/users",
+            axios.get("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/admin/boss/users",
                 {
                     headers: {
                         token: store.state.token
@@ -126,7 +126,7 @@ export default {
             const _this = this ;
             const msg = "您確定要修改用戶 " + account + " 的權限嗎!?";
             if ( confirm( msg ) ){
-                axios.post("http://localhost:8081/controller/admin/boss/users/" + user.id
+                axios.post("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/admin/boss/users/" + user.id
                     , { level : newLevel },
                     {
                         headers: {
@@ -152,7 +152,7 @@ export default {
             if ( block ) {
                 const msg = "您確定解除用戶 " + account + " 的封鎖嗎!?";
                 if ( confirm( msg ) ){
-                    axios.put("http://localhost:8081/controller/admin/boss/users/" + id,{},
+                    axios.put("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/admin/boss/users/" + id,{},
                         {
                             headers: {
                                 token: store.state.token
@@ -175,7 +175,7 @@ export default {
             else {
                 const msg = "您確定要封鎖用戶 " + account + " 嗎!?";
                 if ( confirm( msg ) ){
-                    axios.delete("http://localhost:8081/controller/admin/boss/users/" + id,
+                    axios.delete("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/admin/boss/users/" + id,
                         {
                             headers: {
                                 token: store.state.token

@@ -89,7 +89,7 @@
             },
             myAccount() {
                 const _this = this ;
-                axios.get("http://localhost:8081/controller/userId/" + this.username)
+                axios.get("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/userId/" + this.username)
                     .then(function (resp){
                         const userId = resp.data ;
                         _this.$router.push(
@@ -117,7 +117,7 @@
         },
         created() {
             const _this = this ;
-            axios.post("http://localhost:8081/controller/userInfo",
+            axios.post("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/userInfo",
                 { "token" : store.state.token } )
                 .then(function (resp) {
                     _this.username = resp.data['account'] ;

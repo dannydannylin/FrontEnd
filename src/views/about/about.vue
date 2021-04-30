@@ -38,7 +38,7 @@
         methods: {
             aboutMe() {
                 const _this = this ;
-                axios.get("http://localhost:8081/controller/aboutMe")
+                axios.get("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/aboutMe")
                     .then(function (resp) {
                         _this.about = resp.data ;
                     })

@@ -57,7 +57,7 @@
         methods: {
             login() {
                 const _this = this;
-                axios.post("http://localhost:8081/controller/login", this.user).then(function (reps) {
+                axios.post("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/login", this.user).then(function (reps) {
                     if ( reps.data.stateCode === 200 ) {
                         _this.$store.commit('login', reps.data.token);
                         _this.$router.replace('/index/home');
