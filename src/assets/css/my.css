@@ -1,0 +1,46 @@
+body {
+    background: url("../images/diagonal-squares.png");
+}
+
+.my-font {
+    font-size: larger !important;
+}
+
+.my-position {
+    position:relative;
+    right:250px;
+}
+
+.my-search {
+    font-size: medium !important;
+}
+
+.my-center {
+    text-align: center !important;
+}
+
+.my-bold {
+    font-weight:bold !important;
+}
+
+.my-author-style {
+    color: slategray !important;
+    font-weight: bold ;
+}
+
+.my-opacity {
+    opacity: 0.2 !important;
+}
+
+.my-padding {
+    padding-left: 4em !important;
+    padding-right: 4em !important;
+}
+
+.my-normal-font {
+    font-weight:normal;
+}
+
+
+
+
