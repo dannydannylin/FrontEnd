@@ -48,7 +48,7 @@
                             </div>
 
                             <div class="ui right aligned container">
-                                <button class="ui blue blue button" onclick="window.history.back()">
+                                <button class="ui blue blue button" @click="toLogin">
                                     返回
                                 </button>
                                 <button class="ui blue blue button" type="submit" id="register" @click="register">
@@ -139,6 +139,9 @@
 
                     });
                 }
+            },
+            toLogin() {
+                this.$router.replace('/login');
             }
         }
     }
