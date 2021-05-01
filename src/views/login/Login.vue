@@ -56,9 +56,13 @@
         },
         methods: {
             login() {
+                this.error = "登入中....." ;
                 const _this = this;
-                axios.post("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/login", this.user).then(function (reps) {
+                axios.post("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/login",
+                    this.user, {timeout: 5000})
+                    .then(function (reps) {
                     if ( reps.data.stateCode === 200 ) {
+                        _this.error = "登入成功!!!" ;
                         _this.$store.commit('login', reps.data.token);
                         _this.$router.replace('/index/home');
                         _this.$store.commit('change', '/index/home');
@@ -66,6 +70,8 @@
                     else {
                         _this.error = "帳號密碼錯誤" ;
                     }
+                }).catch(function (){
+                    _this.error = "資料庫關閉，無法登入" ;
                 });
             },
             register() {

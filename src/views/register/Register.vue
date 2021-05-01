@@ -11,7 +11,7 @@
                     </h2>
                     <div class="ui large form">
                         <div class="ui stacked segment">
-                            <div th:text="${msg}" style="color:red;font-weight:bold"></div>
+                            <span v-text="error" style="color: red; font-weight:bold;"></span>
                             <div class="field">
                                 <div class="ui left icon input">
                                     <i class="user icon"></i>
@@ -71,6 +71,7 @@
         name: "Register",
         data() {
           return {
+              error: "",
               passwordAgain: "",
               goodAccount: false,
               badAccount: false,
@@ -129,14 +130,18 @@
                     }, 1000)
                 }
                 else {
+                    this.error = "註冊中....." ;
                     const _this = this ;
-                    axios.post("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/register",_this.user)
+                    axios.post("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/register",
+                        _this.user, {timeout: 5000})
                     .then(function (reps){
                         if ( reps.data ) {
+                            _this.error = "註冊成功!!!" ;
                             alert("註冊成功，請用此帳號登入");
                             _this.$router.replace('/login');
                         }
-
+                    }).catch(function (){
+                        _this.error = "資料庫關閉，無法註冊" ;
                     });
                 }
             },
