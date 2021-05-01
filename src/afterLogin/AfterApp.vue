@@ -1,7 +1,7 @@
 <template>
     <div id="afterApp">
         <TabBar></TabBar>
-        <router-view v-if="isRouterAlive"></router-view>
+        <router-view v-if="isRouterAlive" :key="$route.fullPath"></router-view>
     </div>
 </template>
 

@@ -90,6 +90,14 @@ const routes = [
                 meta: {
                     requireAuth: true
                 }
+            },
+            {
+                path: 'search',
+                name: 'search',
+                component: () => import('../views/search/Search'),
+                meta: {
+                    requireAuth: true
+                }
             }
         ],
         meta: {

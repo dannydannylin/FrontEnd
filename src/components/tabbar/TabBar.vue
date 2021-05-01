@@ -27,8 +27,9 @@
                     </a>
                     <div class="right item">
                         <div class="ui icon input">
-                            <input type="text" placeholder="搜尋" class="my-search">
-                            <i class="search icon link"></i>
+                            <input type="text" placeholder="搜尋"
+                                   class="my-search" v-model="searchText">
+                            <i class="search icon link" @click="search"></i>
                         </div>
                     </div>
                     <div class="right menu">
@@ -76,6 +77,7 @@
                 username : "",
                 level: "",
                 name: "",
+                searchText: ""
             }
         },
         methods: {
@@ -113,6 +115,13 @@
                 else if ( this.level === 'master' ) {
                     this.$router.replace('/admin/master');
                 }
+            },
+            search() {
+                this.$router.push({
+                    path: '/index/search/',
+                    query: { searchText : this.searchText }
+                });
+                this.searchText = "" ;
             }
         },
         created() {
