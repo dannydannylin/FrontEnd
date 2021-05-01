@@ -151,7 +151,7 @@
 
                 // 修改文章
                 if ( this.$route.query.modify ) {
-                    axios.put("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/article/" + this.$route.query.id,
+                    axios.put(axios.defaults.baseURL + "/controller/article/" + this.$route.query.id,
                         this.article, {
                             headers : {
                                 token : store.state.token
@@ -169,7 +169,7 @@
                 }
                 // 發新文章
                 else {
-                    axios.post("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/article", this.article)
+                    axios.post(axios.defaults.baseURL + "/controller/article", this.article)
                         .then(function (reps) {
                             if ( reps.data ) {
                                 alert("發文成功!!!");
@@ -186,7 +186,7 @@
         created() {
             const _this = this ;
             // 拿 user info
-            axios.post("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/userInfo",
+            axios.post(axios.defaults.baseURL + "/controller/userInfo",
                 { "token" : store.state.token } )
                 .then(function (resp) {
                     _this.user.username = resp.data['account'] ;

@@ -204,7 +204,7 @@
             nextPage() {
                 this.pageCount++ ;
                 const _this = this  ;
-                axios.get("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/account/" +
+                axios.get(axios.defaults.baseURL + "/controller/account/" +
                     this.$route.params.id + "/" + this.pageCount )
                     .then(function (resp) {
                         _this.articles = resp.data.content ;
@@ -214,7 +214,7 @@
             prePage() {
                 this.pageCount-- ;
                 const _this = this  ;
-                axios.get("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/account/" +
+                axios.get(axios.defaults.baseURL + "/controller/account/" +
                     this.$route.params.id + "/" + this.pageCount )
                     .then(function (resp) {
                         _this.articles = resp.data.content ;
@@ -240,17 +240,17 @@
         },
         created() {
             const _this = this  ;
-            axios.get("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/account/" +
+            axios.get(axios.defaults.baseURL + "/controller/account/" +
                 this.$route.params.id + "/0" )
                 .then(function (resp) {
                 _this.articles = resp.data.content ;
             });
-            axios.get("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/accountTotalPage/" + this.$route.params.id)
+            axios.get(axios.defaults.baseURL + "/controller/accountTotalPage/" + this.$route.params.id)
                 .then(function (resp) {
                     _this.totalPage = resp.data ;
                 });
 
-            axios.get("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/user/" + this.$route.params.id)
+            axios.get(axios.defaults.baseURL + "/controller/user/" + this.$route.params.id)
                 .then(function (resp) {
                     _this.user = resp.data ;
                     if ( _this.user.gender === 'male' )

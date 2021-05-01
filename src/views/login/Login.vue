@@ -58,7 +58,7 @@
             login() {
                 this.error = "登入中....." ;
                 const _this = this;
-                axios.post("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/login",
+                axios.post(axios.defaults.baseURL + "controller/login",
                     this.user, {timeout: 5000})
                     .then(function (reps) {
                     if ( reps.data.stateCode === 200 ) {

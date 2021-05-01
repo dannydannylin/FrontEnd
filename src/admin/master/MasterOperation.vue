@@ -94,7 +94,7 @@ export default {
     methods: {
         updateData() {
             const _this = this ;
-            axios.get("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/admin/master/users",
+            axios.get(axios.defaults.baseURL + "/controller/admin/master/users",
                 {
                     headers: {
                         token: store.state.token
@@ -118,7 +118,7 @@ export default {
             if ( block ) {
                 const msg = "您確定要讓用戶 " + account + " 可以發文嗎!?";
                 if ( confirm( msg ) ){
-                    axios.put("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/admin/master/userPost/" + id
+                    axios.put(axios.defaults.baseURL + "/controller/admin/master/userPost/" + id
                         ,{},
                         {
                             headers: {
@@ -142,7 +142,7 @@ export default {
             else {
                 const msg = "您確定要封鎖用戶 " + account + " 的發文功能嗎!?";
                 if ( confirm( msg ) ){
-                    axios.delete("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/admin/master/userPost/" + id,
+                    axios.delete(axios.defaults.baseURL + "/controller/admin/master/userPost/" + id,
                         {
                             headers: {
                                 token: store.state.token
@@ -168,7 +168,7 @@ export default {
             if ( block ) {
                 const msg = "您確定讓此用戶 " + account + " 可以留言嗎!?";
                 if ( confirm( msg ) ){
-                    axios.put("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/admin/master/userComment/" + id,{},
+                    axios.put(axios.defaults.baseURL + "/controller/admin/master/userComment/" + id,{},
                         {
                             headers: {
                                 token: store.state.token
@@ -191,7 +191,7 @@ export default {
             else {
                 const msg = "您確定要封鎖用戶 " + account + " 留言功能嗎!?";
                 if ( confirm( msg ) ){
-                    axios.delete("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/admin/master/userComment/" + id,
+                    axios.delete(axios.defaults.baseURL + "/controller/admin/master/userComment/" + id,
                         {
                             headers: {
                                 token: store.state.token

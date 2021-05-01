@@ -129,7 +129,7 @@ router.beforeEach((to, from, next) => {
         if (store.state.token !== '') {
             // 判斷這個 token 是不是偽造的
             // 可否被 server 解析
-            axios.post("https://danforum.azurewebsites.net/demo-0.0.1-SNAPSHOT/controller/isToken",
+            axios.post(axios.defaults.baseURL + "/controller/isToken",
                 { "token" : store.state.token } )
                 .then(function (resp) {
                 if ( resp.data ) {
