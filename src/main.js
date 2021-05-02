@@ -5,7 +5,7 @@ import router from './router'
 import store from './store'
 
 const config = require('./config')
-axios.defaults.baseURL = JSON.parse(config.dev.env.API_URL)
+axios.defaults.baseURL = JSON.parse(config.prod.env.API_URL)
 
 
 Vue.config.productionTip = false
