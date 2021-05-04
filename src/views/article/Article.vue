@@ -208,6 +208,17 @@
             }
         },
         methods: {
+            auth() {
+                const _this = this ;
+                // 拿 username 以及權限
+                axios.post(axios.defaults.baseURL + "/controller/userInfo",
+                    { "token" : store.state.token } )
+                    .then(function (resp) {
+                        _this.user.username = resp.data['account'] ;
+                        _this.user.comment = resp.data['comment'] ;
+                        console.log(_this.user.comment) ;
+                    });
+            },
             toPage(id) {
                 if ( id === 1 )
                     this.$router.push('/index/sports');
@@ -249,7 +260,7 @@
                 this.comment.user.account = this.user.username;
             },
             sendComment() {
-
+                this.auth();
                 if ( !this.user.comment ) {
                     alert("你目前不能留言喔") ;
                     this.comment.content = "" ;
@@ -279,11 +290,6 @@
                     })
             },
             deleteComment(id) {
-
-                if ( !this.user.comment ) {
-                    alert("你目前不能刪除自己的留言喔") ;
-                    return ;
-                }
 
                 const _this = this ;
                 const articleId = this.$route.params.id ;
@@ -317,16 +323,11 @@
         },
         created() {
 
-            // 拿 username
-            axios.post(axios.defaults.baseURL + "/controller/userInfo",
-                { "token" : store.state.token } )
-                .then(function (resp) {
-                    _this.user.username = resp.data['account'] ;
-                    _this.user.comment = resp.data['comment'] ;
-                });
-
             const articleId = this.$route.params.id ;
             const _this = this ;
+
+            this.auth();
+
             // 拿文章
             axios.get(axios.defaults.baseURL + "/controller/article/" + articleId)
                 .then(function (reps){

@@ -77,6 +77,16 @@
           }
         },
         methods: {
+            auth(){
+                // 拿 user info
+                const _this = this ;
+                axios.post(axios.defaults.baseURL + "/controller/userInfo",
+                    { "token" : store.state.token } )
+                    .then(function (resp) {
+                        _this.user.username = resp.data['account'] ;
+                        _this.user.post = resp.data['post'] ;
+                    });
+            },
             submitForm() {
                 // 檢查有沒有沒填或亂填
                 this.prevent() ;
@@ -138,11 +148,12 @@
                 }
             },
             gogo() {
-
+                this.auth() ;
                 const _this = this ;
                 this.typeMethod();
                 this.userMethod();
 
+                console.log(this.user.post) ;
                 if ( !this.user.post ) {
                     alert("打這麼久卻不能發文，真可憐!!!") ;
                     _this.$router.replace('/index/home');
@@ -184,14 +195,7 @@
             }
         },
         created() {
-            const _this = this ;
-            // 拿 user info
-            axios.post(axios.defaults.baseURL + "/controller/userInfo",
-                { "token" : store.state.token } )
-                .then(function (resp) {
-                    _this.user.username = resp.data['account'] ;
-                    _this.user.post = resp.data['post'] ;
-                });
+            this.auth() ;
         }
     }
 </script>

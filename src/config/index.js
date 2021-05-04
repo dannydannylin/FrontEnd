@@ -5,5 +5,8 @@ module.exports = {
     },
     prod: {
         env: require('./prod.env'),
+    },
+    docker: {
+        env: require('./docker'),
     }
 }
